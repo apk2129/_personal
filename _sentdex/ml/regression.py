@@ -13,6 +13,7 @@ df = df[['Adj. Close', 'HL_PCT','PCT_change', 'Adj. Volume', ]]
 forecast_col = 'Adj. Close'
 df.fillna(-9999, inplace=True)
 
+#
 forecast_out = int(math.ceil(0.1*len(df)))
 
 
