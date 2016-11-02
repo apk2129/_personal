@@ -1,6 +1,7 @@
 nums = [0,1,0,3,12]
 current = 0;
 for i in range(0,len(nums)):
+    print(nums,current)
     if (nums[i] != 0):
         nums[current] = nums[i]
         current += 1
