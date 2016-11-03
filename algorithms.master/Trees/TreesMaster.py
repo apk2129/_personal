@@ -151,7 +151,7 @@ class TreeNode:
         i = 0
         while root:
             res[i] = root.val
-            root = 
+            root =
 
 
 
@@ -163,25 +163,40 @@ class TreeNode:
     ----------------------------------------------------------------
         S E R I A L I Z E / D E - S E R I A L I Z E
     ----------------------------------------------------------------
+      1
+     / \
+    2   3
+       / \
+      4   5
+
+    [ 1 2 3 # # 4 5]
+            ^ ^  children of '2'
     '''
     def Serialize_Binary_Tree(self, root):
-        def doit(node):
+        def recurse(node):
             if node:
-                # print(node.val)
                 vals.append(str(node.val))
-                # print(vals)
-                doit(node.left)
-                doit(node.right)
+                recurse(node.left)
+                recurse(node.right)
             else:
                 vals.append('#')
         vals = []
-        doit(root)
+        recurse(root)
         return ' '.join(vals)
-    def Deserialize_Binary_Tree(self, data):
 
-        for i in data.split():
-            if i != '#':
-                TreeNode(i)
+    def Deserialize_Binary_Tree(self, data):
+        def recurse():
+            val = next(vals)
+            if val == '#':
+                return None
+            node = TreeNode(int(val))
+            node.left = doit()
+            node.right = doit()
+            return node
+
+        vals = iter(data.split())
+        return recurse()
+
 
 
 
