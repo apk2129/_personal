@@ -1,21 +1,40 @@
-nums= [1,1,-2]
-# nums= [-1, 0, 1, 2, -1, -4]
+nums   = [-1, 0, 1, 2, -1, -4 ]
 target = 0
 
-result =  []
-nums = sorted(nums)
-for i in range(len(nums)-3):
+def threeSum( nums):
+    """
+    :type nums: List[int]
+    :rtype: List[List[int]]
+    """
+    nums.sort()
+    res = []
 
-    target = -nums[i]
-    lo = i + 1
-    hi = len(nums) - 1
+    for i in range(len(nums)):
 
-    while lo<hi:
-        sum = nums[lo] + nums[hi]
-        if   sum < target:  lo += 1
-        elif sum > target:  hi -= 1
-        else:
-            result.add([nums[i],nums[lo],nums[hi]])
-            break
+        if i != 0 and nums[i] == nums[i-1]: continue
+        if nums[i] > 0 : break    # minor optimization if first value>0 escape
 
-print(result)
+        l   = i + 1
+        r   = len(nums) - 1
+
+        while l < r:
+
+            if nums[l] + nums[r] + nums[i] == target:
+                res.append((nums[i], nums[l], nums[r]))
+                #-------------------------------------------
+                while l < r and nums[l] == nums[l+1]: l += 1
+                while l < r and nums[r] == nums[r-1]: r -= 1
+                #-------------------------------------------
+                l += 1
+                r -= 1
+
+            elif nums[l] + nums[r] < target:
+                l += 1
+            else:
+                r -= 1
+    return res
+
+
+r = threeSum( nums )
+for _ in r:
+    print(_)

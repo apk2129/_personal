@@ -9,6 +9,7 @@ for i in range(0,len(nums)):
 '''
 at this point the pointer is at the last nonzero element
 all non zero elements have been shifted
+there will be dupicates towards the  end after the pointer
 nums = [ 1 , 3 , 12 , 3 , 12]
                       ^
                 current pointer
