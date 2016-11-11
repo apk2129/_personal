@@ -1,31 +1,35 @@
+from collections import defaultdict
+import pprint
 
-# dfs + stack
+def lszero(A):
+        N = len(A)
+        pre = [None]*N
+        curr = 0
+        for i in range(N):
+            curr += A[i]
+            pre[i] = curr
 
-# def binaryTreePaths1(self, root):
-#     if not root:
-#         return []
-#     res, stack = [], [(root, "")]
-#     while stack:
-#         node, ls = stack.pop()
-#         if not node.left and not node.right:
-#             res.append(ls+str(node.val))
-#         if node.right:
-#             stack.append((node.right, ls+str(node.val)+"->"))
-#         if node.left:
-#             stack.append((node.left, ls+str(node.val)+"->"))
-#     return res
-#
+        print(pre) # cummulative sum [1, 3, 1, 5, 1]
 
-# nums = [2, 7, 11, 15]
-# target = 9
-#
-# diff_map = {}
-#
-# for i in range(len(nums)):
-# 	diff = target - nums[i]
-# 	if diff in diff_map:
-#         print("!")3[diff_map[diff],i])
-#     else:
-#         diff_map[diff] = i
-#
-# print(diff_map)
+
+        seen_table = defaultdict(list)
+        seen_table[0]=[-1]
+        longest = -1
+        indices = None
+        pprint.pprint(seen_table)
+
+        for i in range(N): #[1,2,-2,4,-4]
+            s = pre[i]
+            seen_table[s].append(i)
+            pprint.pprint(seen_table,width=2)
+            gap = seen_table[s][-1] - seen_table[s][0]
+            if gap > longest:
+                longest = gap
+                indices = (seen_table[s][0]+1,seen_table[s][-1]+1)
+        if indices:
+            return A[indices[0]:indices[1]]
+        else:
+            return []
+
+
+print(lszero([1,2,-2,4,-4]))

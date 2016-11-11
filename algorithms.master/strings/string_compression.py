@@ -9,4 +9,4 @@ r = ''
 for k,v in Counter(s).items():
     r += k + str(v)
 
-print(r)
+print(Counter(s))

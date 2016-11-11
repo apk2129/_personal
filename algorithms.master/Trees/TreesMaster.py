@@ -27,11 +27,12 @@ class TreeNode:
             if node.left:
                 stack.append((node.left, ls+str(node.val)+"->"))
         return res
+
     def is_Valid_Binary_Tree(self, root):pass
 
     '''
     ----------------------------------------------------------------
-        T R A V E R S A L S
+        T R A V E R S A L S all are DFS all are O ( m + n )
     ----------------------------------------------------------------
     '''
 
@@ -144,7 +145,6 @@ class TreeNode:
                 queue.append((node.right, i+1))
 
         return [result[i] for i in sorted(result)]
-
     def Binary_Tree_Horizontal_Order_Traversal(self, root):
 
         res = defaultdict(list)
@@ -197,6 +197,11 @@ class TreeNode:
         vals = iter(data.split())
         return recurse()
 
+
+    def Kth_smallest_element ( self , node, k ):
+
+        ind = self.InorderTraversal(node)
+        return ind[k-1]
 
 
 

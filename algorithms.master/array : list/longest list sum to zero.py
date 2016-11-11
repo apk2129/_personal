@@ -29,4 +29,4 @@ def lszero(A):
             return []
 
 
-print(lszero([1,2,-2,4,-4]))
+print(lszero([1,2,-2,4,-4,0,0,0,0,0,9,-9]))
