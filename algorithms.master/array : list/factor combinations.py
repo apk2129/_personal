@@ -1,23 +1,22 @@
-import math
-def factorCombinations(no):
-
-    def helper(result, n , start, element, upper):
-        print(result)
-        if n == 1 and len(element) > 1:
-            result.append(element)
-            return
-
-        for i in range(start, n+1):
-            if i > upper:
-                i = n
-            if n%i == 0:
-                element.append(i)
-                helper(result, n//i,i,element,math.sqrt(n//i) )
-                element.pop(-1)
-
-    result = [[]]
-    element = []
-    helper(result,no , 2, element, math.sqrt(no) )
+def getFactors (n):
+    result = []
+    temp = []
+    getResult(n, 2, temp, result)
     return result
 
-print(factorCombinations(6))
+def getResult(num, start, currentResult, finalResult):
+    import copy
+    if (num == 1):
+        if (len(currentResult) > 1):
+            # x= copy.deepcopy()
+            finalResult.append(currentResult[:]) #<------- importatn for deep copy !!
+        return
+
+    for i in range(start, num+1):
+        if (num%i == 0):
+            currentResult.append(i)
+            getResult(num//i, i, currentResult, finalResult)
+            currentResult.pop()
+
+
+print(getFactors(12))

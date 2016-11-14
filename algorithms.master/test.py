@@ -1,35 +1,43 @@
-from collections import defaultdict
-import pprint
+'''
+pattern = "abba", str = "dog cat cat dog"  should return true.
+pattern = "abba", str = "dog cat cat fish" should return false.
+pattern = "aaaa", str = "dog cat cat dog"  should return false.
+pattern = "abba", str = "dog dog dog dog"  should return false.
 
-def lszero(A):
-        N = len(A)
-        pre = [None]*N
-        curr = 0
-        for i in range(N):
-            curr += A[i]
-            pre[i] = curr
+'''
 
-        print(pre) # cummulative sum [1, 3, 1, 5, 1]
+def wordPattern( pattern, str):
+    """
+    :type pattern: str
+    :type str: str
+    :rtype: bool
+    """
+    import collections
+
+    mp1 = {}
+    mp2 = {}
+    mp3 = collections.defaultdict(list)
+    mp4 = collections.defaultdict(list)
+
+    for i in pattern:
+        mp1[i] = mp1.get(i , 0) + 1
+
+    for i in str.split():
+        mp2[i] = mp2.get(i , 0) + 1
+
+    for i,val in enumerate(pattern):
+        mp3[val].append(i)
+
+    for i,val in enumerate(str.split()):
+        mp4[val].append(i)
+
+    print(mp1.values())
+    print(mp2.values())
+    print(mp3)
+    print(mp4)
+
+    return sorted(mp1.values()) == sorted(mp2.values()) and \
+           sorted(mp3.values()) == sorted(mp4.values())
 
 
-        seen_table = defaultdict(list)
-        seen_table[0]=[-1]
-        longest = -1
-        indices = None
-        pprint.pprint(seen_table)
-
-        for i in range(N): #[1,2,-2,4,-4]
-            s = pre[i]
-            seen_table[s].append(i)
-            pprint.pprint(seen_table,width=2)
-            gap = seen_table[s][-1] - seen_table[s][0]
-            if gap > longest:
-                longest = gap
-                indices = (seen_table[s][0]+1,seen_table[s][-1]+1)
-        if indices:
-            return A[indices[0]:indices[1]]
-        else:
-            return []
-
-
-print(lszero([1,2,-2,4,-4]))
+print(wordPattern(pattern= "abba",str = "dog cat cat dog"))
