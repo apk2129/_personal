@@ -12,6 +12,7 @@ def maximum_sub_square(grid):
     for n in grid:
         result.append([0]*len(n))
 
+
     '''copy first row'''
     result[0] = grid[0]
     '''copy first column'''
@@ -50,5 +51,13 @@ if __name__=="__main__":
         [1,1,1,1,0],
         [1,1,1,1,0],
         [0,0,0,0,0]]
-
+    matrix = ["10100",
+              "10111",
+              "11111",
+              "10010"]
+    for row in matrix:
+        row = list(row)
+    for row in matrix:
+        result.append([len(row)*0])
+    print(result)
     print(maximum_sub_square(grid))

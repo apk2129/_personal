@@ -1,0 +1,22 @@
+
+
+Sun Dec 18 20:54:38 2016
+Command line: TestDisk
+
+TestDisk 7.1-WIP, Data Recovery Utility, August 2016
+Christophe GRENIER <grenier@cgsecurity.org>
+http://www.cgsecurity.org
+OS: Darwin, kernel 16.1.0 (Darwin Kernel Version 16.1.0: Thu Oct 13 21:26:57 PDT 2016; root:xnu-3789.2
+Compiler: GCC 4.0
+Compilation date: 2016-12-17T08:56:12
+ext2fs lib: 1.42.8, ntfs lib: libntfs-3g, reiserfs lib: 0.3.1-rc8, ewf lib: 20120504, curses lib: ncurses 5.4
+Hard disk list
+Disk /dev/disk0 - 121 GB / 113 GiB - 236978176 sectors (RO), sector size=512
+Disk /dev/disk2 - 320 GB / 298 GiB - 625142448 sectors (RO), sector size=512
+Disk /dev/rdisk0 - 121 GB / 113 GiB - 236978176 sectors (RO), sector size=512
+Disk /dev/rdisk1 - 120 GB / 111 GiB - 234618880 sectors (RO), sector size=512
+Disk /dev/rdisk2 - 320 GB / 298 GiB - 625142448 sectors (RO), sector size=512
+Disk /dev/rdisk3 - 318 GB / 296 GiB - 622738176 sectors, sector size=512
+
+Partition table type defaults to EFI GPT
+Media is opened in read-only.

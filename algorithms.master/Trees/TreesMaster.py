@@ -213,9 +213,9 @@ if __name__=="__main__":
          / \
         4   3
     '''
-    T  = TreeNode( 4,
-                   TreeNode(3, TreeNode(2), None),
-                   TreeNode(7, TreeNode(5),TreeNode(8) )
+    T  = TreeNode( 1,
+                   TreeNode(2, TreeNode(4),  TreeNode(3)),
+                   TreeNode(5 )
          )
 
     #print(T.binary_Tree_Paths(T))

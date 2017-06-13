@@ -43,9 +43,9 @@ if __name__=="__main__":
     l1.print_list()
 
     # t e s t c a s e  II
-    #10-->2-->32-->4-->5  k = 5
-
-    l1 = LinkedList(10,LinkedList(2,LinkedList(32,LinkedList(4,LinkedList(5)))))
-    l1.print_list()
-    l1.remove_elements_greater_than_k(5)
-    l1.print_list()
+    # #10-->2-->32-->4-->5  k = 5
+    #
+    # l1 = LinkedList(10,LinkedList(2,LinkedList(32,LinkedList(4,LinkedList(5)))))
+    # l1.print_list()
+    # l1.remove_elements_greater_than_k(5)
+    # l1.print_list()

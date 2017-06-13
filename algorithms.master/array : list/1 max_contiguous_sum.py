@@ -2,7 +2,7 @@
 http://www.geeksforgeeks.org/largest-sum-contiguous-subarray/'''
 
 # l = [-2,1,-3,4,-1,2,1,-5,4]
-l=[-1,-2,-3,-11]
+l=[2,3,-1,5,-6]
 
 
 max_so_far = 0

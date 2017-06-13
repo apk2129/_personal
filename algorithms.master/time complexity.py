@@ -6,9 +6,26 @@ Operation     | Example      | Class         | Notes
 'Store'         | l[i] = 0     | O(1)	     |
 'Length'        | len(l)       | O(1)	     |
 'Append'        | l.append(5)  | O(1)	     |
-'Pop'	          | l.pop()      | O(1)	     | same as l.pop(-1), popping at end
+'Pop'	        | l.pop()      | O(1)	     | same as l.pop(-1), popping at end
 'Clear'         | l.clear()    | O(1)	     | similar to l = []
 
+'Slice'         | l[a:b]       | O(b-a)	     | l[1:5]:O(l)/l[:]:O(len(l)-0)=O(N)
+'Extend'        | l.extend(...)| O(len(...)) | depends only on len of extension
+'Construction'  | list(...)    | O(len(...)) | depends on length of ...
+
+'check ==, !='  | l1 == l2     | O(N)        |
+'Insert'        | l[a:b] = ... | O(N)	     |
+'Delete'        | del l[i]     | O(N)	     |
+'Remove'        | l.remove(...)| O(N)	     |
+'Containment'   | x in/not in l| O(N)	     | searches list
+'Copy'          | l.copy()     | O(N)	     | Same as l[:] which is O(N)
+'Pop'	        | l.pop(i)     | O(N)	     | O(N-i): l.pop(0):O(N) (see above)
+'Extreme value' | min(l)/max(l)| O(N)	     | searches list
+'Reverse'	    | l.reverse()  | O(N)	     |
+'Iteration'     | for v in l:  | O(N)        |
+
+'Sort'          | l.sort()     | O(N Log N)    | key/reverse mostly doesn't change
+'Multiply'      | k*l          | O(k N)        | 5*l is O(N): len(l)*l is O(N**2)
 
 
 

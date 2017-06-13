@@ -1,43 +1,22 @@
-'''
-pattern = "abba", str = "dog cat cat dog"  should return true.
-pattern = "abba", str = "dog cat cat fish" should return false.
-pattern = "aaaa", str = "dog cat cat dog"  should return false.
-pattern = "abba", str = "dog dog dog dog"  should return false.
+def palindromePairs( words):
+    d, res = dict([(w[::-1], i) for i, w in enumerate(words)]), []
 
-'''
-
-def wordPattern( pattern, str):
-    """
-    :type pattern: str
-    :type str: str
-    :rtype: bool
-    """
-    import collections
-
-    mp1 = {}
-    mp2 = {}
-    mp3 = collections.defaultdict(list)
-    mp4 = collections.defaultdict(list)
-
-    for i in pattern:
-        mp1[i] = mp1.get(i , 0) + 1
-
-    for i in str.split():
-        mp2[i] = mp2.get(i , 0) + 1
-
-    for i,val in enumerate(pattern):
-        mp3[val].append(i)
-
-    for i,val in enumerate(str.split()):
-        mp4[val].append(i)
-
-    print(mp1.values())
-    print(mp2.values())
-    print(mp3)
-    print(mp4)
-
-    return sorted(mp1.values()) == sorted(mp2.values()) and \
-           sorted(mp3.values()) == sorted(mp4.values())
+    print(d) # {'bat': 1, 'tab': 0, 'tac': 2}  ulta karun store kelay
 
 
-print(wordPattern(pattern= "abba",str = "dog cat cat dog"))
+    for i, w in enumerate(words):
+        for j in range(len(w)+1):
+            prefix, postfix = w[:j], w[j:]
+            print("prefix",prefix)
+            print("postfix",postfix)
+
+            if prefix in d and i != d[prefix] and postfix == postfix[::-1]:
+                res.append([i, d[prefix]])
+            if j>0 and postfix in d and i != d[postfix] and prefix == prefix[::-1]:
+                res.append([d[postfix], i])
+        print("-------")
+    return res
+
+
+s = ["bat", "tab", "cat"]
+print(palindromePairs(s))

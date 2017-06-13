@@ -1,15 +1,46 @@
 import collections
 
-class TrieNode(object):
+class TrieNode:
+
     def __init__(self):
-        """
-        Initialize your data structure here.
-        """
         self.is_word  = False
         self.children = collections.defaultdict(TrieNode)
 
+class Trie:
 
-d = TrieNode()
+    def __init__(self):
+        self.root = TrieNode()
 
-print(d.children[3].children == None)
-print(d.children.get(3) == {})
+    def insert(self, word):
+
+        current = self.root
+        for l in word:
+            current = current.children[l]
+
+        current.is_word = True
+
+    def search(self, word):
+
+        current = self.root
+        for l in word:
+            current = current.children.get(l)
+            if current == None:
+                return False
+
+        return current.is_word
+
+    def startwith(self, word):
+
+        current = self.root
+        for l in word:
+            current = current.children.get(l)
+            if current == None:
+                return False
+
+        return True
+
+
+t = Trie()
+t.insert("Anish")
+t.insert("any")
+print(t.startwith("an"))

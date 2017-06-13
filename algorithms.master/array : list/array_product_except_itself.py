@@ -26,7 +26,7 @@ nums = [1,2,3,4] #, return [24,12,8,6].]
 #     res.append(prod)
 
 
-
+print(nums)
 p = 1
 n = len(nums)
 output = []

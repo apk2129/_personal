@@ -1,58 +1,47 @@
-from prettytable import PrettyTable
+def numIslands(self, grid):
+    """
+    :type grid: List[List[str]]
+    :rtype: int
+    """
+    if not grid:
+        return 0
 
-''' m a x i m u m s u b - s q u a r e '''
+    m = len(grid)
+    n = len(grid[0])
+    sum  = 0
 
-def maximum_sub_square(grid):
+    for i in range(m):
+        for j in range(n):
 
-    print("copy")
-    result = [
-        [0,0,0,0,0],
-        [0,0,0,0,0],
-        [0,0,0,0,0],
-        [0,0,0,0,0]]
-
-    for k1,v1 in enumerate(grid):
-        print(k1)
-        print(v1)
-        for k2, v2 in enumerate(v1):
-            if v2 == 0:
-                result[k1][k2] = 0
+            if grid[i][j] == "0":
+                continue
             else:
-                new_value = get_minimum_value(result, k1, k2) + 1
-                result [k1][k2] = new_value
 
-        __print_matrix(result)
+                #sum up only once per chance of meeting "1"
+                sum += 1
+                stack = list()
+                stack.append([i,j])
 
-        # for element_index, element in row:
-        #     print(row, element)
-    print("result")
-    __print_matrix(result)
+                #visit each "1" in the adjacent area using a stack
+                while len(stack) != 0:
 
-def get_minimum_value(grid, row_index, element_index):
+                    [p,q] = stack.pop()
 
-    min_val = min(grid[row_index][element_index-1],
-    grid[row_index-1][element_index] ,
-    grid[row_index-1][element_index-1])
-    print("min_val",min_val)
-    return min_val
+                    if p >= 1 and grid[p-1][q] == "1":
+                        stack.append([p-1,q])
+
+                    if p < m -1 and grid[p+1][q] == "1":
+                        stack.append([p+1,q])
+
+                    if q >= 1 and grid[p][q-1] == "1":
+                        stack.append([p,q-1])
+
+                    if q < n - 1 and grid[p][q + 1] == "1":
+                        stack.append([p,q+1])
+
+                    #mark as visited
+                    grid[p][q] = "0"
 
 
 
-def __print_matrix(grid):
-    p = PrettyTable()
-    for row in grid:
-        p.add_row(row)
-    print (p.get_string(header=False, border=True))
-
-if __name__=="__main__":
-
-    grid = [
-        [0,1,1,0,1],
-        [1,1,1,0,0],
-        [1,1,1,1,0],
-        [1,1,1,0,1]]
-
-    print("original grid")
-    __print_matrix(grid)
-
-    (maximum_sub_square(grid))
+    return sum
